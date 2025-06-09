@@ -67,19 +67,6 @@ app.post('/submit', async (req, res) => {
     });
   }
   
-  // Basic validation for email or phone
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  // const phonePattern = /^(?:\+880|880|0)1[3-9]\d{8}$/;
-  const bdPhonePattern = /^(?:\+880|880|0)1[3-9]\d{8}$/;
-
-   const input = (Email || "").trim(); // Make sure it’s a string and trimmed
-
-  if (!emailPattern.test(input) && !bdPhonePattern.test(input)) {
-    console.log('❌ Invalid email or phone format');
-    return res.status(400).json({
-      error: 'Please enter a valid email address or phone number'
-    });
-  }
   
   if (!CHAT_ID) {
     console.log('❌ No chat ID available');
