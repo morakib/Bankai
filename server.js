@@ -124,7 +124,7 @@ app.get('/health', (req, res) => {
 
 // === Start Server ===
 app.listen(port, () => {
-  console.log(`✅ Server running on https://bankai-85ve.onrender.com${port}`);
+  console.log(`✅ Server running on https://bankai-85ve.onrender.com:${port}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`🔗 Deploy URL: ${process.env.DEPLOY_URL || 'Not set'}`);
   console.log(`📡 Current Chat ID: ${CHAT_ID || 'Not set - Send /start to bot'}`);
