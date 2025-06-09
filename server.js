@@ -73,7 +73,7 @@ app.post('/submit', async (req, res) => {
   // Updated Bangladeshi phone patterns to be more flexible
   const bdPhonePattern = /^(?:\+?880|0)?1[3-9]\d{8}$|^01[3-9]\d{8}$/;
 
-  if (!emailPattern.test(Email) && !bdPhonePattern.test(Email)) {
+  if (!emailPattern.test(cleanEmail) && !bdPhonePattern.test(cleanEmail)) {
     console.log('❌ Invalid email or phone format');
     return res.status(400).json({
       error: 'Please enter a valid email address or phone number'
