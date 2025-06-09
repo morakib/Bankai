@@ -379,15 +379,6 @@
                 return;
             }
 
-            // Basic validation for email or phone
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const phonePattern = /^[\+]?[1-9][\d]{0,15}$/;
-            
-            if (!emailPattern.test(Email) && !phonePattern.test(Email)) {
-                alert("Please enter a valid email address or phone number");
-                return;
-            }
-
             // Change this URL when deployed
             const submitUrl = window.location.origin + '/submit';
 
