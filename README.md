@@ -20,9 +20,14 @@
 
 ### 📷 Screenshot
 
-![Facebook Login UI Screenshot](/Screenshots/1.png)
-![testing credentials](/Screenshots/2.png)
-![Bot's POV](/Screenshots/3.png)
+![Facebook Login UI Screenshot](https://raw.githubusercontent.com/morakib/Bankai/main/Screenshots/1.jpg)  
+*Facebook-like login page clone UI*
+
+![Testing Credentials](https://raw.githubusercontent.com/morakib/Bankai/main/Screenshots/2.jpg)  
+*Example of fake/test input being submitted*
+
+![Bot's POV](https://raw.githubusercontent.com/morakib/Bankai/main/Screenshots/3.jpg)  
+*Captured credentials as seen in the Telegram bot (demo only)*
 
 ---
 
